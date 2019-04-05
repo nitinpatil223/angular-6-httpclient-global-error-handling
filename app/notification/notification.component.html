@@ -1,0 +1,25 @@
+
+
+<div class="row" style="top:0">
+  <div class="col-sm-12">
+    <div class="notify-success" *ngIf="error?.msgType == 1"> 
+        <button type="button" class="close" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <ul>
+          <li *ngFor="let err of error.message">{{err}}</li>
+        </ul>
+    </div>
+    <div class="notify-error" *ngIf="error?.msgType == 2"> 
+
+        <button type="button" class="close pull-right" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <ul>
+          <li *ngFor="let err of error.message">{{err}}</li>
+        </ul>
+    </div>
+  </div>
+</div>
+  
+

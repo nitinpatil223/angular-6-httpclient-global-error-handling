@@ -1,0 +1,61 @@
+<h3>Customers List</h3>
+
+<div class="row" *ngIf="error && error.length > 0">
+	<div class="col-sm-12 alert alert-warning">
+    {{error}}
+  </div>
+</div>
+
+
+
+  <div class="row">
+    <div class="col-sm-12">
+    
+      <table class="table table-bordered table-sm">
+        <tr>
+          <td>Correct</td><td>Post Detail for id 1</td>
+          <td><input type="button" value='Fetch' class='btn btn-link' (click)="fetch('https://jsonplaceholder.typicode.com/posts/1')" /></td>
+        </tr>
+        <tr>
+          <td>Correct</td><td>Post 1 comments</td>
+          <td><input type="button" value='Fetch' 
+                class='btn btn-link' (click)="fetch('https://jsonplaceholder.typicode.com/posts/1/comments')" /></td>
+        </tr>
+        <tr>
+          <td>incorrect</td><td>Post Detail for id 10000</td>
+          <td><input type="button" value='Fetch' class='btn btn-link' (click)="fetch('https://jsonplaceholder.typicode.com/posts/10000')" /></td>
+        </tr>
+        <tr>
+          <td>incorrect</td><td>Wrong Url</td>
+          <td><input type="button" value='Fetch' 
+                class='btn btn-link' (click)="fetch('https://jsonplaceholder.typicode.com/posts/1/comments-dummy')" /></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <pre>{{jsonResult | json}}</pre>
+
+
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th style="white-space: nowrap;">Zip Code</th>
+        <th>Phone#</th>
+      </tr>
+      <tr *ngFor="let item of customers">
+        <td>{{item.id}}</td>
+        <td><a routerLink="{{item.id}}/detail">{{item.name}}</a></td>
+        <td>{{item.address.street}} {{item.address.suite}} {{item.address.city}} </td>
+        <td>{{item.address.zipcode}}</td>
+        <td>{{item.phone}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
